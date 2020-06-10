@@ -22,14 +22,20 @@
 2. Switch to the directory with the lex (**".l"**) and yacc (**".y"**) files
 3. Assume your lex and yacc files to be ***"prog.l"*** and ***"prog.y"***
 4. Follow the steps below to compile and execute your program:
+
 	### To compile Lex file ONLY:
+
 	1. `flex prog.l`
 	2.  `gcc lex.yy.c`
+
 	### To compile both Lex and YACC files:
+
 	1.  `flex prog.l`
 	2.  `bison -dy prog.y`
 	3.  `gcc lex.yy.c y.tab.c`
+
 	### To execute your program:
+
 	1. `a.exe`
 
 ## Note: To create Lex (".l") and YACC (".y") files download the software [Flex Windows](https://drive.google.com/file/d/0B9D4jOdpRzZHNTVraV9rX280R0E/view) from here. 
