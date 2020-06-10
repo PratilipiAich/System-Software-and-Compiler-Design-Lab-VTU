@@ -26,12 +26,15 @@
 	### To compile Lex file ONLY:
 
 	1. `flex prog.l`
+
 	2.  `gcc lex.yy.c`
 
 	### To compile both Lex and YACC files:
 
 	1.  `flex prog.l`
+
 	2.  `bison -dy prog.y`
+
 	3.  `gcc lex.yy.c y.tab.c`
 
 	### To execute your program:
