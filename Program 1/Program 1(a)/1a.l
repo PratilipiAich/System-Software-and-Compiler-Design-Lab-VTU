@@ -11,17 +11,17 @@
 %%
 
 int main() {
-    printf("Enter arithmetic expression:\n");
+    printf("Enter an arithmetic expression:\n");
     yylex();
-    // Press Ctrl^D while executing to end lex parsing
 
     if(paran==0 && id == op+1 && op>0) {
-        printf("Valid expression\n");
+        printf("Valid Expression!\n");
         printf("No. of identifiers = %d\n", id);
         printf("No. of operators = %d\n", op);
     } else
-        printf("Invalid expression\n");
+        printf("Invalid Expression!!\n");
     return 0;
+    // Press Ctrl^C while executing to end lex parsing
 }
 
 int yywrap() {
