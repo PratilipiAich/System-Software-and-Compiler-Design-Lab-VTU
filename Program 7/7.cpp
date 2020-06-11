@@ -1,7 +1,9 @@
 /*
-Design, develop and implement a C/C++/Java program to simulate the working of Shortest remaining time (SJF) and Round Robin (RR) scheduling algorithms. 
+Design, develop and implement a C/C++/Java program to simulate the working of 
+Shortest remaining time (SJF) and Round Robin (RR) scheduling algorithms. 
 Experiment with different quantum sizes for RR algorithm.
 */
+
 #include<stdio.h>
 
 typedef struct J {
@@ -16,23 +18,31 @@ void scheduler(Job job[], int n, int quantum, int c) {
 	
   int t = 0, done = 0, curr, diff;
 	
-	if (c == 0) // RR
+	// RR
+	if (c == 0) 
 		curr = -1;
-	else // SJF
+		
+	// SJF	
+	else 
 		curr = 0;
 	
-  while (done < n) {	
-		if(c == 1) { // SJF
-			for(int x=0; x<n; x++) {	
-				if(job[curr].burst == 0) // if current job has finished
+  while (done < n) {
+  	
+  		// SJF	
+		if(c == 1) {
+			for(int x=0; x<n; x++) {
+				
+				// If current job has finished	
+				if(job[curr].burst == 0) 
 					curr = x;
 				if(job[x].burst < job[curr].burst)		
 					if(job[x].burst > 0 && job[x].arrival <= t)
 						curr = x;
 			}
 			
-			diff = 1;		// preemptive mode
-			// diff = job[curr].burst;	// non preemptive mode
+			diff = 1;		// Preemptive mode
+			
+			// diff = job[curr].burst;	// Non preemptive mode
 		} else { // RR
 			while(1) {
 				curr = (curr + 1) % n;
@@ -46,7 +56,7 @@ void scheduler(Job job[], int n, int quantum, int c) {
     job[curr].burst -= diff;
 		t += diff;
 		
-    // if curr job has finished
+    // If curr job has finished
     if(job[curr].burst == 0) {
 			done++;		
 			job[curr].finish = t;		
@@ -58,7 +68,8 @@ void scheduler(Job job[], int n, int quantum, int c) {
 	else
 		printf("\nRound Robin (RR)) scheduling details are:\n");	
 	
-  for (int i=0; i<n; i++) // restore burst values for displaying
+	// Restore burst values for displaying	
+  for (int i=0; i<n; i++) 
 		job[i].burst = bursts[i];
 	
   printf("\nJob\tTaT\tWT\n");
@@ -73,12 +84,12 @@ int main() {
 	Job job[100];
 	int n, quantum, choice;
 	
-  printf("Enter the number of processes/jobs:\n");
+  printf("Enter the number of processes/jobs:\t");
 	scanf("%d", &n);
 	
   printf("\nEnter Arrival and Burst time (repectively):\n");
 	for(int i=0;i<n;i++) {
-		printf("Process%d: ", i);
+		printf("Process/Job %d: ", i);
 		scanf("%d%d", &job[i].arrival, &job[i].burst);
 	}
 

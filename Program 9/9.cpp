@@ -2,6 +2,7 @@
 Design, develop and implement a C/C++/Java program to implement page replacement algorithms LRU and FIFO. 
 Assume suitable input required to demonstrate the results.
 */
+
 #include<stdio.h>
 #include<stdlib.h>
 
@@ -9,25 +10,29 @@ Assume suitable input required to demonstrate the results.
 void FIFO(char str[], int len, int frames) {
     int i=0, j=0, k=0, flag=0, count=0;
     
-    // initialize queue
+    // Initialize the queue
     char fqueue[10];
     for(i=0; i<frames; i++)
         fqueue[i] = -1;
     
     printf("\nPAGE\tFRAMES\tFAULTS");
-    // loop through string
+    
+    // Loop through string
     for(i=0; i<len; i++) {
-        // print page
+    	
+        // Print page
         printf("\n%c\t", str[i]);
-        // check if page is present in frames
+        
+        // Check if page is present in frames
         for(k=0; k<frames; k++) {
             if(fqueue[k] == str[i])
                 flag = 1;
         }
 
-        // page fault
+        // Page fault
         if(flag == 0) {
-            // replace oldest element with page
+        	
+            // Replace oldest element with page
             fqueue[j] = str[i];
             j++;
 
@@ -35,15 +40,16 @@ void FIFO(char str[], int len, int frames) {
                 printf("%c ", fqueue[k]);
             printf("\tPage fault %d", count+1);
             count++;
-        } else { // page hit
-            // reset flag and print queue
+        } else { // Page Hit
+        
+            // Reset flag and print queue
             flag = 0;            
             for(k=0; k<frames; k++)
                 printf("%c ", fqueue[k]);
             printf("\tHit");
         }
 
-        // reset j if reached last element
+        // Reset j if reached last element
         if(j == frames)
             j = 0;
     }
@@ -61,7 +67,8 @@ void LRU(char str[], int len, int frames) {
     printf("\nPAGE\tFRAMES\tFAULTS");
     for(i=0; i<len; i++) {
         printf("\n%c\t", str[i]);
-        // check if page is present in frames
+        
+        // Check if page is present in frames
         for(k=0; k<frames; k++) {
             if(fqueue[k] == str[i]) {
                 flag=1;
@@ -69,34 +76,40 @@ void LRU(char str[], int len, int frames) {
             }
         }
 
-        // if queue has empty frames with no page hit
+        // If queue has empty frames with no page hit
         if(j!=frames && flag == 0) {
-            // place page at end of queue
+        	
+            // Place page at end of queue
             fqueue[top] = str[i];
             j++;
             if(j != frames) top++;
         } else {
-            // page fault
+        	
+            // Page Fault
             if(flag == 0) {
-                // shift all characters left
+            	
+                // Shift all characters left
                 for(k=0; k<top; k++)
                     fqueue[k] = fqueue[k+1];
-                // place page at end of queue
+                    
+                // Place page at end of queue
                 fqueue[top] = str[i];
             }
 
             // page hit
             if(flag == 1) {
-                // shift all elements after the hit frame
+            	
+                // Shift all elements after the hit frame
                 for(m=k; m<top; m++) {
                     fqueue[m] = fqueue[m+1];
                 }
-                // place the hit page at end of queue
+                
+                // Place the hit page at end of queue
                 fqueue[top] = str[i];
             }
-        } // end else
+        }
 
-        // print results
+        // Print results
         for(k=0; k<frames; k++)
             printf("%c ", fqueue[k]);
         if(flag == 0) {
@@ -104,7 +117,8 @@ void LRU(char str[], int len, int frames) {
             count++;
         } else
             printf("\tHit");
-        // reset flag
+            
+        // Reset flag
         flag = 0;
     }
 }
@@ -112,14 +126,14 @@ void LRU(char str[], int len, int frames) {
 int main() {
     int ch, repeat=1, i, len, frames;
     char str[25];
-    printf("Enter the number of empty frames:\t");
+    printf("Enter the number of empty frames: ");
     scanf("%d", &frames);
-    printf("Enter the length of the string:\t");
+    printf("Enter the length of the string: ");
     scanf("%d", &len);
     printf("Enter the string:\t");
     scanf("%s", str);
     do {
-        printf("1: FIFO\n2: LRU\n");
+        printf("\n1: FIFO\n2: LRU\n");
         printf("Enter your choice: ");
         scanf("%d", &ch);
         switch(ch) {

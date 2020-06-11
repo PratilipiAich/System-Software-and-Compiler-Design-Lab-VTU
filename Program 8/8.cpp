@@ -2,6 +2,7 @@
 Design, develop and implement a C/C++/Java program to implement Banker's algorithm. 
 Assume suitable input required to demonstrate the results.
 */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
@@ -20,10 +21,10 @@ bool check(int i) {
 
 int main() {
     int k;
-    printf("Enter the number of processes:\n");
+    printf("Enter the number of processes:\t");
     scanf("%d", &processes);
     
-    printf("\nEnter the number of resources:\n");
+    printf("\nEnter the number of resources:\t");
     scanf("%d", &resources);
 
     int seq[processes];
@@ -70,7 +71,7 @@ int main() {
 
     for(i=0; i<processes; i++) {
         if(finish[i] == false) {
-            printf("\nAll processes cannot be safely allocated!\n");
+            printf("\nAll processes cannot be allocated safely!\n");
             exit(0);
         }
     }

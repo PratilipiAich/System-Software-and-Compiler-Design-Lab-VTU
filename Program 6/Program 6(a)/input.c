@@ -1,9 +1,9 @@
-// single line comment
+// Single line comment
 #include<stdio.h>
 int main() {
     /* Multi
-     * line
-     * comment
+      line
+      comment
      */
     printf("Program Works!\n");
     return 0;

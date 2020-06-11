@@ -7,6 +7,7 @@ T2 = C + D
 T3 = T1 + T2 
 A = T3
 */
+
 #include<stdio.h>
 #include<string.h>
 
@@ -15,10 +16,10 @@ int main() {
 	char op1[5], op2[5], res[5];
 	int i=0, n, j, k;
 	
-	printf("Enter the no. of intermediate statements:\n");
+	printf("Enter the no. of intermediate statements: ");
 	scanf("%d",&n);
 	
-	printf("Enter the set of intermediate code:\n");
+	printf("\nEnter the set of intermediate code:\n");
 	for(i=0;i<n;i++)
 		scanf("%s",icode[i]);
 	printf("\n");
@@ -56,7 +57,7 @@ int main() {
 			op1[k]='\0';
 			
 			if(icode[i][j]=='\0') {
-				printf("\n LOAD R1,%s\n",op1);
+				printf("\nLOAD R1,%s\n",op1);
 				printf("STORE %s,R1\n",res);
 				continue;
 			} else {
@@ -91,7 +92,7 @@ int main() {
 					printf("STORE R1,%s\n",res);
 					break;
 
-				default: printf("\nInvalid statement!\n");
+				default: printf("\nInvalid Statement!!\n");
 			}
 		}
 	}

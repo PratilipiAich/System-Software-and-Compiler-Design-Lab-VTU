@@ -4,20 +4,21 @@ A->aBa
 B->bB|#  . 
 Use this table to parse the sentence: abba$
 */
+
 #include<stdio.h>
 #include<string.h>
 
 /*
- FIRST(A)={a}
- FIRST(B)={b#}
- FOLLOW(A)={$}
- FOLLOW(B)={a}
+ FIRST(A)	= {a}
+ FIRST(B)	= {b#}
+ FOLLOW(A)	= {$}
+ FOLLOW(B)	= {a}
  
  Parser Table Entry
  
- M[A,a]=A->aBa
- M[B,a]=B->#
- M[B,b]=B->bB
+ M[A,a]	= A->aBa
+ M[B,a]	= B->#
+ M[B,b]	= B->bB
  */
 
 struct FT {
@@ -27,7 +28,7 @@ struct FT {
 
 struct FT first[10], follow[10];
 
-/*char parser_table[2][3][10]={{"A->aBa","",""},
+/*char parser_table[2][3][10] = {{"A->aBa","",""},
 							 {"B->#","B->bB",""},
 							};*/
 
@@ -156,7 +157,7 @@ int main() {
 		fflush(stdin);
 	}
 	
-    printf("\nIf no entry, enter err\n");
+    printf("\nIf there's 'no entry, enter err.\n");
     for(i=0;i<2;i++)
 	    for (j=0;j<3;j++) {
 		    T = first[i].nonT;
